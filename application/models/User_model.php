@@ -5,7 +5,7 @@ class User_model extends CI_Model
     protected $primary = 'id';
     public function getAll()
     {
-        return $this->db->where('is_active', 0)->get($this->_table)->result();
+        return $this->db->where('is_active', 1)->get($this->_table)->result();
     }
     public function save()
     {
@@ -34,7 +34,7 @@ class User_model extends CI_Model
             'full_name' => htmlspecialchars($this->input->post('full_name'), true),
             'phone' => htmlspecialchars($this->input->post('phone'), true),
             'role' => htmlspecialchars($this->input->post('role'), true),
-            'is_active' => 0,
+            'is_active' => 1,
         );
 
         return $this->db->set($data)->where($this->primary, $id)->update($this->_table);
